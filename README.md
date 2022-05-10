@@ -20,7 +20,7 @@ Structure preserving color normalization (SPCN) is commonly used for color norma
 
 <br/>
 
-![](/figures/SPCN_exp.png)
+![](/figures/SPCN-exp.png)
 
 <br/>
 
@@ -30,7 +30,7 @@ SE-ResNet-50 is used as backbone instead of normal UNet encoder, and squeeze and
 
 <br/>
 
-![](/figures/USE_Net_arch.png){ width=80% }
+![](/figures/USE-Net-arch.png)
 
 <br/>
 
@@ -39,7 +39,7 @@ USE-Net gives segmentation mask and shape marker as the class label probabilitie
 
 <br/>
 
-![](/figures/qualitative_results.png){ width=80% }
+![](/figures/qualitative-results.png)
 
 <br/>
 

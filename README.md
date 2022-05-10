@@ -30,7 +30,7 @@ SE-ResNet-50 is used as backbone instead of normal UNet encoder, and squeeze and
 
 <br/>
 
-![](/figures/USE_Net_arch.png)
+![](/figures/USE_Net_arch.png){ width=80% }
 
 <br/>
 
@@ -39,7 +39,7 @@ USE-Net gives segmentation mask and shape marker as the class label probabilitie
 
 <br/>
 
-![](/figures/qualitative_results.png)
+![](/figures/qualitative_results.png){ width=80% }
 
 <br/>
 

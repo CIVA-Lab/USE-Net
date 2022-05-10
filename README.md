@@ -57,7 +57,7 @@ USE-Net gives segmentation mask and shape marker as the class label probabilitie
 
 Copyright &copy; 2022-2023. Gani Rahmon, Imad Eddine Toubal and Dr. K. Palaniappan and Curators of the University of Missouri, a public corporation. All Rights Reserved.
 
-**Created by:** Ph.D. students: Gani Rahmon and Imad Eddine Toubal
+**Created by:** Ph.D. students: Gani Rahmon
 Department of Electrical Engineering and Computer Science,  
 University of Missouri-Columbia  
 

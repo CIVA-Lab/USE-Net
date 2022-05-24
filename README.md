@@ -47,7 +47,163 @@ USE-Net gives segmentation mask and shape marker as the class label probabilitie
 
 <br/>
 
-**The codes and details about how to train and inference the proposed USE-Net network will be uploaded soon.** 
+# How to use proposed pipeline
+Proposed pipeline has three stages: 
+
+    1. Preprocessing
+
+    2. Deep Learning
+
+    3. Postprocessing
+
+<br/>
+
+## 1. Preprocessing
+
+**SPCN** folder contains all scripts used to do preprocessing. The preprocessing is done in ```MATLAB```
+
+<br/>
+
+### A. Conversion from XML to Images 
+
+<br/>
+
+Converting ground truth (GT) and getting mask and shape marker from GT.
+
+1. Put MoNuSeg train data in a folder called ```MoNuSeg_TrainingData```, and MoNuSeg test data in a folder called ```MoNuSegTestData```. 
+
+2. Change input path and extensions accordingly in ```convertXMLToImgTrain.m``` and run the script to convert train data.
+
+3. Change input path and extensions accordingly in ```convertXMLToImgTest.m``` and run the script to convert test data.
+
+4. The new folders will be created and the converted files will be saved in those folders.
+
+<br/>
+
+### B. Running Color Normalization
+
+<br/>
+
+For color normalization SPCN is used. 
+
+The following repository is used to run SPCN : https://github.com/abhishekvahadane/CodeRelease_ColorNormalization 
+
+As a target the following training image of liver tissue ```TCGA-B0-5711-01Z-00-DX1```
+
+<br/>
+
+## 2. USE-Net (Deep Learning)
+
+**USE-Net** folder contains all scripts used to do training and inference. The deep learning is done in ```Python```
+
+<br/>
+
+### A. Trainig
+
+<br/>
+
+To train USE-Net data need to be in a correct folder.
+
+1. Put converted train data in a folder called ```trainData``` inside ```dataset``` folder
+    ```
+    trainData/
+        BinaryMask/
+        Inputs/
+        Marker/
+        SPCN/    
+    ```
+
+2. Create folder named  ```augTrainData``` with same structure as ```trainData```
+    ```
+    augTrainData/
+        BinaryMask/
+        Inputs/
+        Marker/
+        SPCN/    
+    ```
+
+3. Run ```DataAugmentation.py``` script to augment data and store it in ```augTrainData``` folder.
+
+4. Change input, label, marker paths and give a model name in ```TrainUSENet.py``` and run the script to train the network. It requires ```se_resnet50``` as a backbone.
+
+5. The trained model will be saved in the folder named ```models```. The weights used in the paper is provided inside folder ```models```.
+
+<br/>
+
+### B.Inference
+
+<br/>
+
+To run inference on the test data the data needs to be in a correct folder and the model used for inference needs to be in ```models``` folder.
+
+1. Put converted test data in a folder called ```testData``` inside ```dataset``` folder
+    ```
+    testData/
+        BinaryMask/
+        Inputs/
+        Marker/
+        SPCN/    
+    ```
+
+2. Change input paths and give a pretrained model name in ```InferUSENet.py``` and run the script to make inference.
+
+3. The results will be saved in a folder named ```output```. 
+    ```
+    output/
+        Mask/
+        Marker/ 
+    ```
+
+<br/>
+
+## 3. Postprocessing
+
+**Postprocessing** folder contains all scripts used to do postprocessing. The postprocessing is done in ```MATLAB```.
+
+<br/>
+
+### A. Running Postprocessing
+
+<br/>
+
+After obtaining mask and marker, the postprocessing is performed using ```watershed``` algorithm to get final labels. 
+
+1. Put mask and marker outputs from USE-Net in a folder called ```USE-Net-Final```
+    ```
+    USE-Net-Final/
+        Mask/
+        Marker/   
+    ```
+
+2. Change input path accordingly in ```postProcessing.m``` and run the script to get final labels for evaluation.
+
+3. The final labels will be saved in a folder named ```Label``` inside ```USE-Net-Final``` folder.
+    ```
+    USE-Net-Final/
+        Label/
+        Mask/
+        Marker/   
+    ```
+
+### B. Evaluation
+
+<br/>
+
+After obtaining final labels, the average aggregated Jaccard Index (AJI) is computed to evaluate the performance. 
+
+1. Create a folder named ```BinaryLabeled``` inside folder ```TestGT```  and place the test data converted Ground Truth inside that folder.
+
+2. Change input path accordingly in ```computeAverageAJI.m``` and run the script to get evaluation results, such as:
+  
+    a. Individual AJI
+
+    b. Nuclei Counts (correct, missing)
+
+    c. Mean AJI
+
+3. Observe the mean AJI.
+
+<br/>
 
 <br/>
 

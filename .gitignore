@@ -1,0 +1,9 @@
+build
+.cache
+
+# Datas
+SPCN/NewTrainData/
+SPCN/NewTestData/
+SPCN/MoNuSeg_TrainingData/Annotations/
+SPCN/MoNuSeg_TrainingData/TissueImages/
+SPCN/MoNuSegTestData/TissueImages/

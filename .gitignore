@@ -8,8 +8,3 @@ SPCN/MoNuSeg_TrainingData/Annotations/
 SPCN/MoNuSeg_TrainingData/TissueImages/
 SPCN/MoNuSegTestData/TissueImages/
 SPCN/CodeRelease_ColorNormalization-master/
-Postprocessing/USE-Net-Final/Label/
-Postprocessing/USE-Net-Final/Label_Vis/
-Postprocessing/USE-Net-Final/Mask/
-Postprocessing/USE-Net-Final/Marker/
-Postprocessing/TestGT/BinaryLabeled/
